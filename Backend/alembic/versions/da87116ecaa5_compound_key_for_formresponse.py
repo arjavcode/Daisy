@@ -30,3 +30,4 @@ def downgrade():
                existing_type=postgresql.UUID(),
                nullable=True)
     # ### end Alembic commands ###
+    
