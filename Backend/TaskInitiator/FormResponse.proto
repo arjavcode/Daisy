@@ -1,0 +1,28 @@
+syntax = "proto3";
+
+/* python -m grpc_tools.protoc -I. --python_out=. --grpc_python_out=. FormResponse.proto */
+
+message Response {
+  string question_id = 1;
+  string question_text = 2;
+  int32 question_order = 3;
+  string response = 4;
+}
+
+message FormResponse {
+  string id = 1;
+  repeated Response responses = 2;
+}
+
+message Task {
+  string task_id = 1;
+  string response = 2;
+}
+
+message TaskStatus {
+  repeated Task tasks = 1;
+}
+
+service PostSubmission {
+  rpc Process (FormResponse) returns (TaskStatus) {}
+}
